@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="330.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.ConfigController">
+   <children>
+      <Label layoutX="14.0" layoutY="12.0" text="COS配置:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutY="241.0" prefWidth="520.0" />
+      <GridPane layoutX="14.0" layoutY="36.0" prefHeight="176.0" prefWidth="493.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="81.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="0.0" prefWidth="7.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0" prefWidth="272.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0" prefWidth="133.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="SecretId:" />
+            <Label text="SecretKey:" GridPane.rowIndex="1" />
+            <Label text="AppId:" GridPane.rowIndex="2" />
+            <Label text="存储桶:" GridPane.rowIndex="3" />
+            <Label text="所属地域:" GridPane.rowIndex="4" />
+            <Label text="上传路径:" GridPane.rowIndex="5" />
+            <TextField fx:id="secretId" onMouseClicked="#clickSId" promptText="API密钥管理中的SecretId" GridPane.columnIndex="2" />
+            <PasswordField fx:id="secretKey" onMouseClicked="#clickSKey" promptText="API密钥管理中的SecretKey" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="appId" onMouseClicked="#clickAppId" promptText="API密钥管理中的APPID" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="bucketName" onMouseClicked="#clickBucket" promptText="Bucket名称" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="region" onMouseClicked="#clickRegion" promptText="Bucket所属地域简称" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="cosPath" onMouseClicked="#clickCosPath" promptText="指定上传路径" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label text="/" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Hyperlink fx:id="bucketPage" onAction="#toBucketPage" text="前往 Bucket 列表" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Hyperlink fx:id="regionPage" onAction="#toRegionPage" text="前往地域简称列表" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Hyperlink fx:id="keyPage" onAction="#toKeyPage" text="前往密钥管理页面" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="/" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="pathSign" textFill="RED" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+      <Separator layoutY="31.0" prefWidth="520.0" />
+      <Label layoutX="14.0" layoutY="222.0" text="Tcupoon配置:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Group>
+         <children>
+            <RadioButton fx:id="copyMdUrl" layoutX="133.0" layoutY="254.0" mnemonicParsing="false" text="自动复制MarkDown格式图片URL" />
+            <RadioButton fx:id="noCopy" layoutX="405.0" layoutY="253.0" mnemonicParsing="false" text="不自动复制" />
+            <RadioButton fx:id="copyUrl" layoutX="14.0" layoutY="253.0" mnemonicParsing="false" text="自动复制URL" />
+         </children>
+      </Group>
+      <Separator layoutY="284.0" prefWidth="520.0" />
+      <Button fx:id="save" layoutX="218.0" layoutY="292.0" mnemonicParsing="false" onAction="#saveConfig" text="    保存    " textFill="RED" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="423.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.MainController">
+   <children>
+      <Pane fx:id="getFile" layoutY="19.0" onDragDropped="#getFilePath" onDragOver="#getFileOver" prefHeight="225.0" prefWidth="423.0">
+         <children>
+            <Label fx:id="text" layoutX="102.0" layoutY="97.0" text="将文件拖入此区域上传">
+               <font>
+                  <Font name="Microsoft YaHei" size="22.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="clickOutUrl" layoutX="147.0" layoutY="128.0" text="点击访问文件外链" />
+         </children></Pane>
+      <ToolBar prefHeight="25.0" prefWidth="432.0">
+         <items>
+            <Label fx:id="setCos" onMouseClicked="#toConfig" onMouseEntered="#setConfigInColor" onMouseExited="#setConfigOutColor" text="设置" />
+            <Label text=" " />
+            <Label fx:id="help" onMouseClicked="#toHelp" onMouseEntered="#setHelpInColor" onMouseExited="#setHelpOutColor" text=" 帮助" />
+            <Label text=" " />
+            <Label fx:id="about" onMouseClicked="#toAbout" onMouseEntered="#setAboutInColor" onMouseExited="#setAboutOutColor" text="关于" />
+         </items>
+      </ToolBar>
+   </children>
+</AnchorPane>

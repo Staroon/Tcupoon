@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="200.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.AboutController">
+   <children>
+      <Label layoutX="111.0" layoutY="37.0" text="欢迎使用Tcupoon工具">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="106.0" text="该工具可以助你快速的上传文件到腾讯云对象存储中">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="141.0" text="并生成外部链接">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

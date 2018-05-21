@@ -1,0 +1,69 @@
+package com.staroon.tcupoon.common;
+
+import java.io.*;
+import java.util.Properties;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: Staroon
+ * Date: 2018/5/21
+ * Time: 8:21
+ */
+public class ConfigTool {
+    final String configFilePath = "src/main/resources/config.properties";
+    Properties defaultConfig = new Properties();
+
+    public Config getConfig() {
+        Config tcupConfig = new Config();
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(configFilePath));
+            defaultConfig.load(bufferedReader);
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        tcupConfig.setCopyUrl(new Integer(defaultConfig.getProperty("copyUrl")));
+        tcupConfig.setCopyMdUrl(new Integer(defaultConfig.getProperty("copyMdUrl")));
+        tcupConfig.setSecretId(defaultConfig.getProperty("secretId"));
+        tcupConfig.setSecretKey(defaultConfig.getProperty("secretKey"));
+        tcupConfig.setBucketName(defaultConfig.getProperty("bucketName"));
+        tcupConfig.setAppId(defaultConfig.getProperty("appId"));
+        tcupConfig.setRegion(defaultConfig.getProperty("region"));
+        tcupConfig.setCosPath(defaultConfig.getProperty("cosPath"));
+
+        return tcupConfig;
+    }
+
+
+
+    public void writeConfig(Config tcupConfig) {
+        try {
+            OutputStream writeConfig = new FileOutputStream(configFilePath);
+
+            defaultConfig.setProperty("secretId", tcupConfig.getSecretId());
+            defaultConfig.setProperty("secretKey", tcupConfig.getSecretKey());
+            defaultConfig.setProperty("appId", tcupConfig.getAppId());
+            defaultConfig.setProperty("bucketName", tcupConfig.getBucketName());
+            defaultConfig.setProperty("region", tcupConfig.getRegion());
+            defaultConfig.setProperty("cosPath", tcupConfig.getCosPath());
+            defaultConfig.setProperty("copyUrl", String.valueOf(tcupConfig.getCopyUrl()));
+            defaultConfig.setProperty("copyMdUrl", String.valueOf(tcupConfig.getCopyMdUrl()));
+
+            defaultConfig.store(writeConfig, "Tcupoon Config File");
+            writeConfig.flush();
+            writeConfig.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        ConfigTool configTool = new ConfigTool();
+        Config tcupConfig = configTool.getConfig();
+        System.out.println(tcupConfig.toString());
+        tcupConfig.setCosPath("blog/test");
+        configTool.writeConfig(tcupConfig);
+    }
+}
