@@ -24,18 +24,22 @@ public class ConfigTool {
             e.printStackTrace();
         }
 
-        tcupConfig.setCopyUrl(new Integer(defaultConfig.getProperty("copyUrl")));
-        tcupConfig.setCopyMdUrl(new Integer(defaultConfig.getProperty("copyMdUrl")));
+        int copyUrl = new Integer(defaultConfig.getProperty("copyUrl"));
+        int copyMdUrl = new Integer(defaultConfig.getProperty("copyMdUrl"));
+        int noCopy = copyUrl == copyMdUrl ? 1 : 0;
+
+        tcupConfig.setCopyUrl(copyUrl);
+        tcupConfig.setCopyMdUrl(copyMdUrl);
         tcupConfig.setSecretId(defaultConfig.getProperty("secretId"));
         tcupConfig.setSecretKey(defaultConfig.getProperty("secretKey"));
         tcupConfig.setBucketName(defaultConfig.getProperty("bucketName"));
         tcupConfig.setAppId(defaultConfig.getProperty("appId"));
         tcupConfig.setRegion(defaultConfig.getProperty("region"));
         tcupConfig.setCosPath(defaultConfig.getProperty("cosPath"));
+        tcupConfig.setNoCopy(noCopy);
 
         return tcupConfig;
     }
-
 
 
     public void writeConfig(Config tcupConfig) {

@@ -153,6 +153,7 @@ public class ConfigController implements Initializable {
 
         if (group.getSelectedToggle() != null) {
             String select = group.getSelectedToggle().toString().split("=")[1].split(",")[0].trim();
+            System.out.println(select);
             switch (select) {
                 case "noCopy":
                     currentConfig.setCopyUrl(0);
