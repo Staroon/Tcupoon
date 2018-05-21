@@ -87,7 +87,7 @@ public class UploadTool {
         // 检测 Bucket 是否存在
         if (!cosClient.doesBucketExist(bucketName)) {
             cosClient.shutdown();
-            System.out.println("该Bucket不存在");
+//            System.out.println("该Bucket不存在");
             return null;
         }
 

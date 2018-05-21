@@ -106,6 +106,11 @@ public class MainController implements Initializable {
         Config tcupConfig = configTool.getConfig();
         String outUrl = fileUpload.uploadFile(tcupConfig, filePath);
 
+        if (outUrl == null || "".equals(outUrl)) {
+            text.setText("       文件上传失败");
+            return;
+        }
+
         text.setText("       文件上传成功");
         String finalOutUrl = outUrl;
         clickOutUrl.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
