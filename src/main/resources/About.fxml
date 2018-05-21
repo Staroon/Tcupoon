@@ -9,23 +9,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="200.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.AboutController">
    <children>
-      <Label layoutX="111.0" layoutY="37.0" text="欢迎使用Tcupoon工具">
+      <Label layoutX="108.0" layoutY="29.0" text="欢迎使用Tcupoon工具">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="106.0" text="该工具可以助你快速的上传文件到腾讯云对象存储中">
+      <Label layoutX="18.0" layoutY="90.0" text="该工具可以助你快速的上传文件到腾讯云对象存储中，">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="155.0" layoutY="141.0" text="并生成外部链接">
+      <Label layoutX="18.0" layoutY="116.0" text="并自动将外链复制到剪切板。">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <GridPane layoutX="18.0" layoutY="164.0" prefHeight="36.0" prefWidth="186.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="68.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="72.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="37.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="开发者:" />
+            <Hyperlink fx:id="toGit" onAction="#toGit" text="GitHub" GridPane.columnIndex="1" />
+            <Hyperlink fx:id="toBlog" onAction="#toBlog" text="博客" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
