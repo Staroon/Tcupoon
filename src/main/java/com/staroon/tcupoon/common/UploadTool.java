@@ -71,8 +71,9 @@ public class UploadTool {
         // 获取文件后缀
         String fileExtrend = fullFileName.substring(fullFileName.lastIndexOf(".") + 1);
         // 生成文件路径
-        String cosFileName = "/" + tcupConfig.getCosPath() + "/" + today + "/" +
-                generateString(12) + "." + fileExtrend;
+        String cosFileName = tcupConfig.getCosPath().equals("") ? ("/"  + today + "/" +
+                generateString(12) + "." + fileExtrend) : ("/" + tcupConfig.getCosPath() + "/"+ today + "/" +
+                generateString(12) + "." + fileExtrend);
 
         // 初始化用户身份信息
         COSCredentials cred = new BasicCOSCredentials(tcupConfig.getSecretId(), tcupConfig.getSecretKey());
@@ -91,9 +92,9 @@ public class UploadTool {
             return null;
         }
 
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, cosFileName, localFile);
+        PutObjectRequest objRequest = new PutObjectRequest(bucketName, cosFileName, localFile);
 
-        PutObjectResult putObjectResult = cosClient.putObject(putObjectRequest);
+        PutObjectResult objResult = cosClient.putObject(objRequest);
 
         // 关闭客户端(关闭后台线程)
         cosClient.shutdown();
