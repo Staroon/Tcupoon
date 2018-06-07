@@ -144,12 +144,12 @@ public class ConfigController implements Initializable {
 
         Config currentConfig = new Config();
 
-        currentConfig.setSecretId(secretId.getText());
-        currentConfig.setSecretKey(secretKey.getText());
-        currentConfig.setAppId(appId.getText());
-        currentConfig.setBucketName(bucketName.getText());
-        currentConfig.setRegion(region.getText());
-        currentConfig.setCosPath(cosPath.getText());
+        currentConfig.setSecretId(secretId.getText().trim());
+        currentConfig.setSecretKey(secretKey.getText().trim());
+        currentConfig.setAppId(appId.getText().trim());
+        currentConfig.setBucketName(bucketName.getText().trim());
+        currentConfig.setRegion(region.getText().trim());
+        currentConfig.setCosPath(cosPath.getText().trim());
 
         if (group.getSelectedToggle() != null) {
             String select = group.getSelectedToggle().toString().split("=")[1].split(",")[0].trim();

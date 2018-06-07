@@ -40,7 +40,7 @@
             <TextField fx:id="appId" onMouseClicked="#clickAppId" promptText="API密钥管理中的APPID" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextField fx:id="bucketName" onMouseClicked="#clickBucket" promptText="Bucket名称" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <TextField fx:id="region" onMouseClicked="#clickRegion" promptText="Bucket所属地域简称" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <TextField fx:id="cosPath" onMouseClicked="#clickCosPath" promptText="指定上传路径，留空表示上传到根目录" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="cosPath" onMouseClicked="#clickCosPath" promptText="指定上传路径，留空表示根目录" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Label text="/" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Hyperlink fx:id="bucketPage" onAction="#toBucketPage" text="前往 Bucket 列表" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Hyperlink fx:id="regionPage" onAction="#toRegionPage" text="前往地域简称列表" GridPane.columnIndex="3" GridPane.rowIndex="4" />
