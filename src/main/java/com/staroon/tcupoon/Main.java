@@ -14,7 +14,6 @@ import java.net.URL;
  * User: Staroon
  * Date: 2018/5/17
  * Time: 8:58
- * To change this template use File | Settings | File Templates.
  */
 public class Main extends Application {
 

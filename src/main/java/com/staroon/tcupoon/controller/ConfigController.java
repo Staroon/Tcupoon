@@ -123,16 +123,19 @@ public class ConfigController implements Initializable {
         save.setTextFill(Color.BLACK);
         save.setText("    保存    ");
     }
+
     public void clickSKey(MouseEvent event) throws Exception {
         pathSign.setText("");
         save.setTextFill(Color.BLACK);
         save.setText("    保存    ");
     }
+
     public void clickSId(MouseEvent event) throws Exception {
         pathSign.setText("");
         save.setTextFill(Color.BLACK);
         save.setText("    保存    ");
     }
+
     public void saveConfig(ActionEvent action) throws Exception {
 
         if (cosPath.getText().startsWith("/") || cosPath.getText().endsWith("/")) {

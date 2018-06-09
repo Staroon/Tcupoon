@@ -1,6 +1,9 @@
 package com.staroon.tcupoon.common;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.OutputStream;
 import java.util.Properties;
 
 /**
@@ -10,7 +13,7 @@ import java.util.Properties;
  * Time: 8:21
  */
 public class ConfigTool {
-    final String configFilePath = "src/main/resources/config.properties";
+    String configFilePath = this.getClass().getClassLoader().getResource("").getPath() + "../../conf/config.properties";
     Properties defaultConfig = new Properties();
 
     public Config getConfig() {

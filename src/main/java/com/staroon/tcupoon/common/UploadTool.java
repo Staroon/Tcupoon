@@ -71,8 +71,8 @@ public class UploadTool {
         // 获取文件后缀
         String fileExtrend = fullFileName.substring(fullFileName.lastIndexOf(".") + 1);
         // 生成文件路径
-        String cosFileName = tcupConfig.getCosPath().equals("") ? ("/"  + today + "/" +
-                generateString(12) + "." + fileExtrend) : ("/" + tcupConfig.getCosPath() + "/"+ today + "/" +
+        String cosFileName = tcupConfig.getCosPath().equals("") ? ("/" + today + "/" +
+                generateString(12) + "." + fileExtrend) : ("/" + tcupConfig.getCosPath() + "/" + today + "/" +
                 generateString(12) + "." + fileExtrend);
 
         // 初始化用户身份信息
