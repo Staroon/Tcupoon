@@ -1,9 +1,6 @@
 package com.staroon.tcupoon.common;
 
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -13,14 +10,20 @@ import java.util.Properties;
  * Time: 8:21
  */
 public class ConfigTool {
-    String configFilePath = this.getClass().getClassLoader().getResource("").getPath() + "../../conf/config.properties";
+
     Properties defaultConfig = new Properties();
+
+    public String getConfigPath() {
+        File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+        String parentDir = jarFile.getParent();
+        return parentDir + "/../conf/config.properties";
+    }
 
     public Config getConfig() {
         Config tcupConfig = new Config();
 
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(configFilePath));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(getConfigPath()));
             defaultConfig.load(bufferedReader);
             bufferedReader.close();
         } catch (Exception e) {
@@ -44,10 +47,9 @@ public class ConfigTool {
         return tcupConfig;
     }
 
-
     public void writeConfig(Config tcupConfig) {
         try {
-            OutputStream writeConfig = new FileOutputStream(configFilePath);
+            OutputStream writeConfig = new FileOutputStream(getConfigPath());
 
             defaultConfig.setProperty("secretId", tcupConfig.getSecretId());
             defaultConfig.setProperty("secretKey", tcupConfig.getSecretKey());

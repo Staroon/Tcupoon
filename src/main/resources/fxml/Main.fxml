@@ -19,8 +19,6 @@
          <items>
             <Label fx:id="setCos" onMouseClicked="#toConfig" onMouseEntered="#setConfigInColor" onMouseExited="#setConfigOutColor" text="设置" />
             <Label text=" " />
-            <Label fx:id="help" onMouseClicked="#toHelp" onMouseEntered="#setHelpInColor" onMouseExited="#setHelpOutColor" text=" 帮助" />
-            <Label text=" " />
             <Label fx:id="about" onMouseClicked="#toAbout" onMouseEntered="#setAboutInColor" onMouseExited="#setAboutOutColor" text="关于" />
          </items>
       </ToolBar>

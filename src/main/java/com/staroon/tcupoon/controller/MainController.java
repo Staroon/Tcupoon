@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.*;
@@ -35,8 +34,6 @@ public class MainController implements Initializable {
     @FXML
     private Label setCos;
 
-    @FXML
-    private Label help;
 
     @FXML
     private Label about;
@@ -46,9 +43,6 @@ public class MainController implements Initializable {
 
     @FXML
     private Label text;
-
-    @FXML
-    private Button copyUrl;
 
     @FXML
     private Hyperlink clickOutUrl;
@@ -64,7 +58,7 @@ public class MainController implements Initializable {
 
 
     public void toConfig(MouseEvent event) throws Exception {
-        Parent config = FXMLLoader.load(getClass().getResource("/Config.fxml"));
+        Parent config = FXMLLoader.load(getClass().getResource("/fxml/Config.fxml"));
         Scene configScene = new Scene(config);
         Stage configStage = new Stage();
         configStage.setTitle("设置");
@@ -73,18 +67,9 @@ public class MainController implements Initializable {
         configStage.show();
     }
 
-    public void toHelp(MouseEvent event) throws Exception {
-        Parent help = FXMLLoader.load(getClass().getResource("/Help.fxml"));
-        Scene helpScene = new Scene(help);
-        Stage helpStage = new Stage();
-        helpStage.setTitle("帮助");
-        helpStage.setScene(helpScene);
-        helpStage.setResizable(false);
-        helpStage.show();
-    }
 
     public void toAbout(MouseEvent event) throws Exception {
-        Parent about = FXMLLoader.load(getClass().getResource("/About.fxml"));
+        Parent about = FXMLLoader.load(getClass().getResource("/fxml/About.fxml"));
         Scene aboutScene = new Scene(about);
         Stage aboutStage = new Stage();
         aboutStage.setTitle("关于");
@@ -157,10 +142,6 @@ public class MainController implements Initializable {
         setCos.setTextFill(Color.web("#4169E1"));
     }
 
-    public void setHelpInColor(MouseEvent event) {
-        help.setTextFill(Color.web("#4169E1"));
-    }
-
     public void setAboutOutColor(MouseEvent event) {
         about.setTextFill(Color.web("#000000"));
     }
@@ -168,9 +149,4 @@ public class MainController implements Initializable {
     public void setConfigOutColor(MouseEvent event) {
         setCos.setTextFill(Color.web("#000000"));
     }
-
-    public void setHelpOutColor(MouseEvent event) {
-        help.setTextFill(Color.web("#000000"));
-    }
-
 }
