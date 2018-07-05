@@ -1,8 +1,6 @@
 package com.staroon.tcupoon.controller;
 
-import com.staroon.tcupoon.common.Config;
-import com.staroon.tcupoon.common.ConfigTool;
-import com.staroon.tcupoon.common.UploadTool;
+import com.staroon.tcupoon.common.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +19,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -89,12 +89,16 @@ public class MainController implements Initializable {
         }
 
         Config tcupConfig = configTool.getConfig();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String upload_time = df.format(new Date());
         String outUrl = fileUpload.uploadFile(tcupConfig, filePath);
 
         if (outUrl == null || "".equals(outUrl)) {
             text.setText("       文件上传失败");
             return;
         }
+
+        SqliteTool.writeToDb(new Urls(outUrl, filePath, upload_time));
 
         text.setText("       文件上传成功");
         String finalOutUrl = outUrl;

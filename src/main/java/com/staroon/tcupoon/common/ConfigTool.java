@@ -13,6 +13,10 @@ public class ConfigTool {
 
     Properties defaultConfig = new Properties();
 
+    /**
+     *   D:\Work\WorkSpace\Tcupoon\target
+     * @return
+     */
     public String getConfigPath() {
         File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
         String parentDir = jarFile.getParent();
