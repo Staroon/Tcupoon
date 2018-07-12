@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+import static javafx.stage.StageStyle.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Staroon
@@ -30,6 +32,7 @@ public class Main extends Application {
                 getClass().getResourceAsStream("/img/logo.png")));
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
+//        primaryStage.initStyle(TRANSPARENT);
         primaryStage.show();
     }
 

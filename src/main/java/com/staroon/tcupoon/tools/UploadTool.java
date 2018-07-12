@@ -1,4 +1,4 @@
-package com.staroon.tcupoon.common;
+package com.staroon.tcupoon.tools;
 
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -7,6 +7,7 @@ import com.qcloud.cos.auth.COSCredentials;
 import com.qcloud.cos.model.PutObjectRequest;
 import com.qcloud.cos.model.PutObjectResult;
 import com.qcloud.cos.region.Region;
+import com.staroon.tcupoon.model.Config;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

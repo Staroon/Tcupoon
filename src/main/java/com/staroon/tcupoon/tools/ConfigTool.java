@@ -1,4 +1,6 @@
-package com.staroon.tcupoon.common;
+package com.staroon.tcupoon.tools;
+
+import com.staroon.tcupoon.model.Config;
 
 import java.io.*;
 import java.util.Properties;

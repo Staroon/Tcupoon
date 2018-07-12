@@ -1,7 +1,7 @@
 package com.staroon.tcupoon.controller;
 
-import com.staroon.tcupoon.common.Config;
-import com.staroon.tcupoon.common.ConfigTool;
+import com.staroon.tcupoon.model.Config;
+import com.staroon.tcupoon.tools.ConfigTool;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -131,6 +131,22 @@ public class ConfigController implements Initializable {
     }
 
     public void clickSId(MouseEvent event) throws Exception {
+        pathSign.setText("");
+        save.setTextFill(Color.BLACK);
+        save.setText("    保存    ");
+    }
+
+    public void clickAutoCopy(MouseEvent event) throws Exception {
+        pathSign.setText("");
+        save.setTextFill(Color.BLACK);
+        save.setText("    保存    ");
+    }
+    public void clickAutoCopyMd(MouseEvent event) throws Exception {
+        pathSign.setText("");
+        save.setTextFill(Color.BLACK);
+        save.setText("    保存    ");
+    }
+    public void clickNoCopy(MouseEvent event) throws Exception {
         pathSign.setText("");
         save.setTextFill(Color.BLACK);
         save.setText("    保存    ");

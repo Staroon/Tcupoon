@@ -1,6 +1,10 @@
 package com.staroon.tcupoon.controller;
 
-import com.staroon.tcupoon.common.*;
+import com.staroon.tcupoon.model.Config;
+import com.staroon.tcupoon.model.Urls;
+import com.staroon.tcupoon.tools.ConfigTool;
+import com.staroon.tcupoon.tools.SqliteTool;
+import com.staroon.tcupoon.tools.UploadTool;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +38,8 @@ public class MainController implements Initializable {
     @FXML
     private Label setCos;
 
+    @FXML
+    private Label records;
 
     @FXML
     private Label about;
@@ -64,9 +70,20 @@ public class MainController implements Initializable {
         configStage.setTitle("设置");
         configStage.setScene(configScene);
         configStage.setResizable(false);
+//        configStage.initStyle(UTILITY);
         configStage.show();
     }
 
+    public void toRecords(MouseEvent event) throws Exception {
+        Parent records = FXMLLoader.load(getClass().getResource("/fxml/Records.fxml"));
+        Scene recordScene = new Scene(records);
+        Stage recordStage = new Stage();
+        recordStage.setTitle("上传历史");
+        recordStage.setScene(recordScene);
+        recordStage.setResizable(false);
+//        recordStage.initStyle(UTILITY);
+        recordStage.show();
+    }
 
     public void toAbout(MouseEvent event) throws Exception {
         Parent about = FXMLLoader.load(getClass().getResource("/fxml/About.fxml"));
@@ -75,6 +92,7 @@ public class MainController implements Initializable {
         aboutStage.setTitle("关于");
         aboutStage.setScene(aboutScene);
         aboutStage.setResizable(false);
+//        aboutStage.initStyle(UTILITY);
         aboutStage.show();
     }
 
@@ -146,11 +164,19 @@ public class MainController implements Initializable {
         setCos.setTextFill(Color.web("#4169E1"));
     }
 
+    public void setRecordsInColor(MouseEvent event) {
+        records.setTextFill(Color.web("#4169E1"));
+    }
+
     public void setAboutOutColor(MouseEvent event) {
         about.setTextFill(Color.web("#000000"));
     }
 
     public void setConfigOutColor(MouseEvent event) {
         setCos.setTextFill(Color.web("#000000"));
+    }
+
+    public void setRecordsOutColor(MouseEvent event) {
+        records.setTextFill(Color.web("#000000"));
     }
 }

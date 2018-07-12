@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="330.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.ConfigController">
+<AnchorPane prefHeight="330.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.ConfigController">
    <children>
       <Label layoutX="14.0" layoutY="12.0" text="COS配置:">
          <font>
@@ -55,13 +65,16 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Group>
+      <HBox alignment="CENTER" cacheHint="SPEED" layoutY="252.0" prefHeight="23.0" prefWidth="520.0">
          <children>
-            <RadioButton fx:id="copyMdUrl" layoutX="133.0" layoutY="254.0" mnemonicParsing="false" text="自动复制MarkDown格式图片URL" />
-            <RadioButton fx:id="noCopy" layoutX="405.0" layoutY="253.0" mnemonicParsing="false" text="不自动复制" />
-            <RadioButton fx:id="copyUrl" layoutX="14.0" layoutY="253.0" mnemonicParsing="false" text="自动复制URL" />
+            <RadioButton fx:id="copyUrl" mnemonicParsing="false" onMouseClicked="#clickAutoCopy" text="自动复制URL      " />
+            <RadioButton fx:id="copyMdUrl" mnemonicParsing="false" onMouseClicked="#clickAutoCopyMd" text="自动复制MarkDown格式图片URL      " />
+            <RadioButton fx:id="noCopy" mnemonicParsing="false" onMouseClicked="#clickNoCopy" text="不自动复制      " />
          </children>
-      </Group>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
       <Separator layoutY="284.0" prefWidth="520.0" />
       <Button fx:id="save" layoutX="218.0" layoutY="292.0" mnemonicParsing="false" onAction="#saveConfig" text="    保存    " textFill="RED" />
    </children>

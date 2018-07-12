@@ -1,10 +1,11 @@
-package com.staroon.tcupoon.common;
+package com.staroon.tcupoon.tools;
+
+import com.staroon.tcupoon.model.Urls;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,8 +36,8 @@ public class SqliteTool {
             Statement stmt = conn.createStatement();
             String sql = "INSERT INTO urls(url, orig_path, upload_time) VALUES(" +
                     "'" + urls.getUrl() + "'," +
-                    "'" + urls.getOrig_path() + "'," +
-                    "'" + urls.getUpload_time() + "')";
+                    "'" + urls.getOrigPath() + "'," +
+                    "'" + urls.getUploadTime() + "')";
             int result = stmt.executeUpdate(sql);
 
             if (result == 0) {
@@ -50,7 +51,33 @@ public class SqliteTool {
         }
     }
 
+    public static List<Urls> getUrlsList() {
+        List<Urls> urlsList = new ArrayList<Urls>();
+        Connection conn = new SqliteTool().getDbConn();
+        try {
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM urls ORDER BY id DESC";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                String idCol = String.valueOf(rs.getInt("id"));
+                String urlCol = rs.getString("url");
+                String localCol = rs.getString("orig_path");
+                String updateCol = rs.getString("upload_time");
+                urlsList.add(new Urls(idCol, urlCol, localCol, updateCol));
+            }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return urlsList;
+    }
+
     public static void main(String[] args) {
-        writeToDb(new Urls("http://aaa","D:/ddd","2018-07-05 14:52:23"));
+//        writeToDb(new Urls("http://aaabbbbb", "D:/ddd", "2018-07-05 14:52:23"));
+        List<Urls> urls = getUrlsList();
+        for (Urls url : urls) {
+            System.out.println(url.toString());
+        }
     }
 }

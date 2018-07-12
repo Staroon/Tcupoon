@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.RecordsController">
+   <children>
+      <TableView fx:id="urlsTable" prefHeight="350.0" prefWidth="700.0">
+        <columns>
+          <TableColumn fx:id="idCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="序号" />
+          <TableColumn fx:id="urlCol" prefWidth="246.0" text="外链地址" />
+            <TableColumn fx:id="localCol" prefWidth="180.0" text="本地路径" />
+            <TableColumn fx:id="updateCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" text="上传日期" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

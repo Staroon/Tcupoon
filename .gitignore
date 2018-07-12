@@ -1,3 +1,6 @@
 .idea/
 tcupoon.iml
-src/main/resources/config.properties
+conf/config.properties
+classes/
+target/
+data/sqlite3.exe

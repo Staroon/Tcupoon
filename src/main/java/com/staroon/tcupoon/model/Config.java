@@ -1,4 +1,4 @@
-package com.staroon.tcupoon.common;
+package com.staroon.tcupoon.model;
 
 /**
  * Created with IntelliJ IDEA.
