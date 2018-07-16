@@ -16,10 +16,9 @@ import java.util.List;
  */
 public class SqliteTool {
 
-    String dbPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParent();
-    String dbFile = dbPath + "/../data/tcupoon.tdb";
+    private static String dbFile = new Commons().getTcupHome() + "/data/tcupoon.tdb";
 
-    public Connection getDbConn() {
+    private static Connection getDbConn() {
         Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
@@ -31,7 +30,7 @@ public class SqliteTool {
     }
 
     public static void writeToDb(Urls urls) {
-        Connection conn = new SqliteTool().getDbConn();
+        Connection conn = getDbConn();
         try {
             Statement stmt = conn.createStatement();
             String sql = "INSERT INTO urls(url, orig_path, upload_time) VALUES(" +
@@ -53,7 +52,7 @@ public class SqliteTool {
 
     public static List<Urls> getUrlsList() {
         List<Urls> urlsList = new ArrayList<Urls>();
-        Connection conn = new SqliteTool().getDbConn();
+        Connection conn = getDbConn();
         try {
             Statement stmt = conn.createStatement();
             String sql = "SELECT * FROM urls ORDER BY id DESC";

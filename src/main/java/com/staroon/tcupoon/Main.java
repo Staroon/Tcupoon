@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
-import static javafx.stage.StageStyle.*;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Staroon

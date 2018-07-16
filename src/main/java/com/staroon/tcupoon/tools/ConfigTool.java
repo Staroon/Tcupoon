@@ -1,6 +1,7 @@
 package com.staroon.tcupoon.tools;
 
 import com.staroon.tcupoon.model.Config;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.Properties;
@@ -13,19 +14,20 @@ import java.util.Properties;
  */
 public class ConfigTool {
 
-    Properties defaultConfig = new Properties();
+    private static Properties defaultConfig = new Properties();
+    private static Logger logger=Logger.getLogger(ConfigTool.class);
 
     /**
      *   D:\Work\WorkSpace\Tcupoon\target
-     * @return
+     * @return TcupHome
      */
-    public String getConfigPath() {
-        File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-        String parentDir = jarFile.getParent();
-        return parentDir + "/../conf/config.properties";
+    private static String getConfigPath() {
+        Commons commons = new Commons();
+        String tcupHome = commons.getTcupHome();
+        return tcupHome + "/conf/config.properties";
     }
 
-    public Config getConfig() {
+    public static Config getConfig() {
         Config tcupConfig = new Config();
 
         try {
@@ -53,7 +55,7 @@ public class ConfigTool {
         return tcupConfig;
     }
 
-    public void writeConfig(Config tcupConfig) {
+    public static void writeConfig(Config tcupConfig) {
         try {
             OutputStream writeConfig = new FileOutputStream(getConfigPath());
 
@@ -75,10 +77,9 @@ public class ConfigTool {
     }
 
     public static void main(String[] args) {
-        ConfigTool configTool = new ConfigTool();
-        Config tcupConfig = configTool.getConfig();
+        Config tcupConfig = getConfig();
         System.out.println(tcupConfig.toString());
-        tcupConfig.setCosPath("blog/test");
-        configTool.writeConfig(tcupConfig);
+        tcupConfig.setCosPath("work");
+        writeConfig(tcupConfig);
     }
 }

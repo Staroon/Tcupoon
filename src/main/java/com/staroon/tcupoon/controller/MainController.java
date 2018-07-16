@@ -27,6 +27,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import static javafx.stage.StageStyle.UTILITY;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Staroon
