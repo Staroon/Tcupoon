@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import static com.staroon.tcupoon.tools.ConfigTool.getConfig;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Staroon
@@ -22,35 +24,20 @@ import java.util.Random;
  */
 public class UploadTool {
 
-    public static void main(String[] args) {
-
-        ConfigTool configTool = new ConfigTool();
-        Config tcupConfig = configTool.getConfig();
-        System.out.println(tcupConfig.toString());
-
-        // 待上传文件路径
-        String localFilePath = "D:/User/Pictures/ICO/关机图标ico.ico";
-
-        // 执行上传文件程序
-        new UploadTool().uploadFile(tcupConfig, localFilePath);
-    }
-
     /**
-     * 返回一个定长的随机字符串(只包含大小写字母、数字)
+     * 返回一个定长(12位)的随机字符串(只包含大小写字母、数字)
      *
-     * @param length 随机字符串长度
      * @return 随机字符串
      */
-    public String generateString(int length) {
+    private static String generateString() {
         final String ALLCHAR = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         StringBuffer sb = new StringBuffer();
         Random random = new Random();
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < 12; i++) {
             sb.append(ALLCHAR.charAt(random.nextInt(ALLCHAR.length())));
         }
         return sb.toString();
     }
-
 
     /**
      * 上传文件到指定Bucket的指定目录
@@ -59,7 +46,7 @@ public class UploadTool {
      * @param localFilePath 待上传文件路径
      * @return 文件在COS上的外链"url: <bucketname>-<APPID>.cos.<region>.myqcloud.com + cosPath"
      */
-    public String uploadFile(Config tcupConfig, String localFilePath) {
+    public static String uploadFile(Config tcupConfig, String localFilePath) {
 
         // 获取当前年月日
         Date now = new Date();
@@ -73,8 +60,8 @@ public class UploadTool {
         String fileExtrend = fullFileName.substring(fullFileName.lastIndexOf(".") + 1);
         // 生成文件路径
         String cosFileName = tcupConfig.getCosPath().equals("") ? ("/" + today + "/" +
-                generateString(12) + "." + fileExtrend) : ("/" + tcupConfig.getCosPath() + "/" + today + "/" +
-                generateString(12) + "." + fileExtrend);
+                generateString() + "." + fileExtrend) : ("/" + tcupConfig.getCosPath() + "/" + today + "/" +
+                generateString() + "." + fileExtrend);
 
         // 初始化用户身份信息
         COSCredentials cred = new BasicCOSCredentials(tcupConfig.getSecretId(), tcupConfig.getSecretKey());
@@ -104,5 +91,17 @@ public class UploadTool {
                 ".cos." + tcupConfig.getRegion() + ".myqcloud.com" + cosFileName;
 
         return outUrl;
+    }
+
+    public static void main(String[] args) {
+
+        Config tcupConfig = getConfig();
+        System.out.println(tcupConfig.toString());
+
+        // 待上传文件路径
+        String localFilePath = "D:/User/Pictures/ICO/关机图标ico.ico";
+
+        // 执行上传文件程序
+        uploadFile(tcupConfig, localFilePath);
     }
 }
