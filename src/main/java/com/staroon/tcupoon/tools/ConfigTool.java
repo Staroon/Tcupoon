@@ -15,12 +15,7 @@ import java.util.Properties;
 public class ConfigTool {
 
     private static Properties defaultConfig = new Properties();
-    private static Logger logger=Logger.getLogger(ConfigTool.class);
 
-    /**
-     *   D:\Work\WorkSpace\Tcupoon\target
-     * @return TcupHome
-     */
     private static String getConfigPath() {
         Commons commons = new Commons();
         String tcupHome = commons.getTcupHome();
