@@ -2,9 +2,7 @@ package com.staroon.tcupoon.controller;
 
 import com.staroon.tcupoon.model.Config;
 import com.staroon.tcupoon.model.Urls;
-import com.staroon.tcupoon.tools.ConfigTool;
 import com.staroon.tcupoon.tools.SqliteTool;
-import com.staroon.tcupoon.tools.UploadTool;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +13,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -27,7 +26,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import static javafx.stage.StageStyle.UTILITY;
+import static com.staroon.tcupoon.tools.ConfigTool.getConfig;
+import static com.staroon.tcupoon.tools.UploadTool.uploadFile;
+import static javafx.stage.StageStyle.TRANSPARENT;
 
 /**
  * Created with IntelliJ IDEA.
@@ -58,12 +59,9 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         clickOutUrl.setVisible(false);
+//        loading.setVisible(false);
 //        clickOutUrl.setDisable(true);
     }
-
-    ConfigTool configTool = new ConfigTool();
-    UploadTool fileUpload = new UploadTool();
-
 
     public void toConfig(MouseEvent event) throws Exception {
         Parent config = FXMLLoader.load(getClass().getResource("/fxml/Config.fxml"));
@@ -108,19 +106,18 @@ public class MainController implements Initializable {
             }
         }
 
-        Config tcupConfig = configTool.getConfig();
+        Config tcupConfig = getConfig();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String upload_time = df.format(new Date());
-        String outUrl = fileUpload.uploadFile(tcupConfig, filePath);
+        String outUrl = uploadFile(tcupConfig, filePath);
 
         if (outUrl == null || "".equals(outUrl)) {
-            text.setText("       文件上传失败");
+            text.setText("文件上传失败");
             return;
         }
 
         SqliteTool.writeToDb(new Urls(outUrl, filePath, upload_time));
-
-        text.setText("       文件上传成功");
+        text.setText("文件上传成功");
         String finalOutUrl = outUrl;
         clickOutUrl.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override

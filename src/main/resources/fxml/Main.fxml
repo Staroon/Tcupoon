@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="423.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.staroon.tcupoon.controller.MainController">
    <children>
-      <Pane fx:id="getFile" layoutY="19.0" onDragDropped="#getFilePath" onDragOver="#getFileOver" prefHeight="225.0" prefWidth="423.0">
-         <children>
-            <Label fx:id="text" layoutX="102.0" layoutY="97.0" text="将文件拖入此区域上传">
-               <font>
-                  <Font name="Microsoft YaHei" size="22.0" />
-               </font>
-            </Label>
-            <Hyperlink fx:id="clickOutUrl" layoutX="147.0" layoutY="128.0" text="点击访问文件外链" />
-         </children></Pane>
-      <ToolBar prefHeight="25.0" prefWidth="432.0">
+      <ToolBar prefHeight="25.0" prefWidth="432.0" style="-fx-background-color: transparent;">
          <items>
             <Label fx:id="setCos" onMouseClicked="#toConfig" onMouseEntered="#setConfigInColor" onMouseExited="#setConfigOutColor" text="设置" />
             <Label text=" " />
@@ -26,6 +19,22 @@
             <Label text=" " />
             <Label fx:id="about" onMouseClicked="#toAbout" onMouseEntered="#setAboutInColor" onMouseExited="#setAboutOutColor" text="关于" />
          </items>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </ToolBar>
+      <Pane fx:id="getFile" layoutY="23.0" onDragDropped="#getFilePath" onDragOver="#getFileOver" prefHeight="221.0" prefWidth="423.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="82.0" layoutY="81.0" prefHeight="60.0" prefWidth="260.0">
+               <children>
+                  <Label fx:id="text" text="将文件拖入此区域上传">
+                     <font>
+                        <Font name="Microsoft YaHei" size="22.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="clickOutUrl" text="点击访问文件外链" />
+               </children>
+            </VBox>
+         </children></Pane>
    </children>
 </AnchorPane>
