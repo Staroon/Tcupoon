@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.net.URL;
 import java.util.List;
@@ -41,6 +43,11 @@ public class RecordsController implements Initializable {
         urlCol.setCellValueFactory(cellData -> cellData.getValue().urlProperty());
         localCol.setCellValueFactory(cellData -> cellData.getValue().origPathProperty());
         updateCol.setCellValueFactory(cellData -> cellData.getValue().uploadTimeProperty());
+
+        // 设置 urlCol和localCol 两列可被编辑复制
+        urlsTable.setEditable(true);
+        urlCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        localCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         List<Urls> urlsList = SqliteTool.getUrlsList();
         ObservableList<Urls> list = FXCollections.observableArrayList();

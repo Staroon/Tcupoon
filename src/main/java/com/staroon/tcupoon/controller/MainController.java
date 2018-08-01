@@ -13,7 +13,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -28,7 +27,6 @@ import java.util.ResourceBundle;
 
 import static com.staroon.tcupoon.tools.ConfigTool.getConfig;
 import static com.staroon.tcupoon.tools.UploadTool.uploadFile;
-import static javafx.stage.StageStyle.TRANSPARENT;
 
 /**
  * Created with IntelliJ IDEA.

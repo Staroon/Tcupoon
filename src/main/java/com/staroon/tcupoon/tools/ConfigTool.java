@@ -1,9 +1,11 @@
 package com.staroon.tcupoon.tools;
 
 import com.staroon.tcupoon.model.Config;
-import org.apache.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.OutputStream;
 import java.util.Properties;
 
 /**
