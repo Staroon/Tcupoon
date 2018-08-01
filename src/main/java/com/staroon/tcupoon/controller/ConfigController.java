@@ -62,15 +62,14 @@ public class ConfigController implements Initializable {
     @FXML
     private Button save;
 
-    final ToggleGroup group = new ToggleGroup();
-    ConfigTool configTool = new ConfigTool();
+    private final ToggleGroup group = new ToggleGroup();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pathSign.setText("");
         save.setTextFill(Color.BLACK);
         save.setText("    保存    ");
-        Config defaultConfig = configTool.getConfig();
+        Config defaultConfig = ConfigTool.getConfig();
 
         secretId.setText(defaultConfig.getSecretId());
         secretKey.setText(defaultConfig.getSecretKey());
@@ -192,7 +191,7 @@ public class ConfigController implements Initializable {
             }
         }
 
-        configTool.writeConfig(currentConfig);
+        ConfigTool.writeConfig(currentConfig);
         save.setTextFill(Color.BLACK);
         save.setText(" 保存成功 ");
     }
