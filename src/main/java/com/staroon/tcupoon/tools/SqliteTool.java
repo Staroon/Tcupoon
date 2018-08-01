@@ -50,12 +50,12 @@ public class SqliteTool {
         }
     }
 
-    public static List<Urls> getUrlsList() {
+    public static List<Urls> getUrlsList(int rowStart, int rowEnd) {
         List<Urls> urlsList = new ArrayList<Urls>();
         Connection conn = getDbConn();
         try {
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM urls ORDER BY id DESC";
+            String sql = "SELECT * FROM urls ORDER BY id DESC LIMIT " + rowStart + " , " + rowEnd;
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 String idCol = String.valueOf(rs.getInt("id"));
@@ -74,7 +74,7 @@ public class SqliteTool {
 
     public static void main(String[] args) {
 //        writeToDb(new Urls("http://aaabbbbb", "D:/ddd", "2018-07-05 14:52:23"));
-        List<Urls> urls = getUrlsList();
+        List<Urls> urls = getUrlsList(0,5);
         for (Urls url : urls) {
             System.out.println(url.toString());
         }
