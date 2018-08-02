@@ -26,8 +26,8 @@ public class Main extends Application {
         fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Tcupoon");
-        primaryStage.getIcons().add(new Image(
-                getClass().getResourceAsStream("/img/logo.png")));
+//        primaryStage.getIcons().add(new Image(
+//                getClass().getResourceAsStream("/img/logo.png")));
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
 //        primaryStage.initStyle(TRANSPARENT);
