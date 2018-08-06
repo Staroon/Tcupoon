@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.OutputStream;
 import java.util.Properties;
 
+import static com.staroon.tcupoon.tools.Encryption.deStr;
+import static com.staroon.tcupoon.tools.Encryption.enStr;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Staroon
@@ -41,11 +44,11 @@ public class ConfigTool {
 
         tcupConfig.setCopyUrl(copyUrl);
         tcupConfig.setCopyMdUrl(copyMdUrl);
-        tcupConfig.setSecretId(defaultConfig.getProperty("secretId"));
-        tcupConfig.setSecretKey(defaultConfig.getProperty("secretKey"));
-        tcupConfig.setBucketName(defaultConfig.getProperty("bucketName"));
-        tcupConfig.setAppId(defaultConfig.getProperty("appId"));
-        tcupConfig.setRegion(defaultConfig.getProperty("region"));
+        tcupConfig.setSecretId(deStr(defaultConfig.getProperty("secretId")));
+        tcupConfig.setSecretKey(deStr(defaultConfig.getProperty("secretKey")));
+        tcupConfig.setBucketName(deStr(defaultConfig.getProperty("bucketName")));
+        tcupConfig.setAppId(deStr(defaultConfig.getProperty("appId")));
+        tcupConfig.setRegion(deStr(defaultConfig.getProperty("region")));
         tcupConfig.setCosPath(defaultConfig.getProperty("cosPath"));
         tcupConfig.setNoCopy(noCopy);
 
@@ -56,11 +59,11 @@ public class ConfigTool {
         try {
             OutputStream writeConfig = new FileOutputStream(getConfigPath());
 
-            defaultConfig.setProperty("secretId", tcupConfig.getSecretId());
-            defaultConfig.setProperty("secretKey", tcupConfig.getSecretKey());
-            defaultConfig.setProperty("appId", tcupConfig.getAppId());
-            defaultConfig.setProperty("bucketName", tcupConfig.getBucketName());
-            defaultConfig.setProperty("region", tcupConfig.getRegion());
+            defaultConfig.setProperty("secretId", enStr(tcupConfig.getSecretId()));
+            defaultConfig.setProperty("secretKey", enStr(tcupConfig.getSecretKey()));
+            defaultConfig.setProperty("appId", enStr(tcupConfig.getAppId()));
+            defaultConfig.setProperty("bucketName", enStr(tcupConfig.getBucketName()));
+            defaultConfig.setProperty("region", enStr(tcupConfig.getRegion()));
             defaultConfig.setProperty("cosPath", tcupConfig.getCosPath());
             defaultConfig.setProperty("copyUrl", String.valueOf(tcupConfig.getCopyUrl()));
             defaultConfig.setProperty("copyMdUrl", String.valueOf(tcupConfig.getCopyMdUrl()));
