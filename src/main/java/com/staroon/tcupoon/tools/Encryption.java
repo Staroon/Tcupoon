@@ -2,6 +2,7 @@ package com.staroon.tcupoon.tools;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
 import java.io.IOException;
 
 /**
@@ -26,6 +27,7 @@ public class Encryption {
 
     /**
      * 加密第三步: base64加密
+     *
      * @param origStr 输入字符串
      * @return 加密字符串
      */
@@ -36,6 +38,7 @@ public class Encryption {
 
     /**
      * 用于base64解密
+     *
      * @param origStr base64加密字符串
      * @return 字符串
      */
@@ -51,6 +54,7 @@ public class Encryption {
 
     /**
      * 用于十六进制字符串解密
+     *
      * @param hexStr 输入字符串
      * @return 字符串
      */
@@ -69,6 +73,7 @@ public class Encryption {
 
     /**
      * 加密第二步: 转为十六进制字符串
+     *
      * @param reverseStr 输入字符串
      * @return 十六进制字符串
      */
@@ -88,6 +93,7 @@ public class Encryption {
 
     /**
      * 加密第一步: 字符串反转
+     *
      * @param str 输入字符串
      * @return 反转字符串
      */
