@@ -12,6 +12,8 @@ import com.staroon.tcupoon.model.Config;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static com.staroon.tcupoon.tools.ConfigTool.getConfig;
@@ -89,7 +91,7 @@ public class UploadTool {
         return outUrl;
     }
 
-    private static COSClient getCosClient(Config tcupConfig) {
+    public static COSClient getCosClient(Config tcupConfig) {
 
         COSCredentials cred = new BasicCOSCredentials(tcupConfig.getSecretId(), tcupConfig.getSecretKey());
         ClientConfig clientConfig = new ClientConfig(new Region("ap-beijing"));
@@ -97,6 +99,29 @@ public class UploadTool {
         return new COSClient(cred, clientConfig);
     }
 
+    public static Map<String,String> getRegions(){
+        Map<String,String> regions = new HashMap<>();
+
+        regions.put("ap-beijing-1","北京一区（华北）");
+        regions.put("ap-beijing","北京");
+        regions.put("ap-shanghai","上海（华东）");
+        regions.put("ap-guangzhou","广州（华南）");
+        regions.put("ap-chengdu","成都（西南）");
+        regions.put("ap-chongqing","重庆");
+        regions.put("ap-singapore","新加坡");
+        regions.put("ap-hongkong","香港");
+        regions.put("na-toronto","多伦多");
+        regions.put("eu-frankfurt","法兰克福");
+        regions.put("ap-mumbai","孟买");
+        regions.put("ap-seoul","首尔");
+        regions.put("na-siliconvalley","硅谷");
+        regions.put("na-ashburn","弗吉尼亚");
+        regions.put("ap-bangkok","曼谷");
+        regions.put("eu-moscow","莫斯科");
+        regions.put("ap-tokyo","东京");
+
+        return regions;
+    }
     public static void main(String[] args) {
 
         Config tcupConfig = getConfig();
