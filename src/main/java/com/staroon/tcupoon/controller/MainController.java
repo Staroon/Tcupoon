@@ -95,6 +95,7 @@ public class MainController implements Initializable {
     }
 
     public void getFilePath(DragEvent event) throws Exception {
+
         Dragboard dragboard = event.getDragboard();
         String filePath = null;
         if (dragboard.hasFiles()) {
@@ -108,6 +109,7 @@ public class MainController implements Initializable {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String upload_time = df.format(new Date());
         String outUrl = uploadFile(tcupConfig, filePath);
+
 
         if (outUrl == null || "".equals(outUrl)) {
             text.setText("文件上传失败");

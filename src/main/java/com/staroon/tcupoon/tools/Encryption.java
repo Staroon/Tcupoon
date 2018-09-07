@@ -103,7 +103,7 @@ public class Encryption {
     }
 
     public static void main(String[] args) {
-        String enStr = enStr("12地球D+++-saff");
+        String enStr = enStr("12地球D+++-sa\\/ffa\\nhdJHDK=J=d=");
         System.out.println("加密: " + enStr);
         System.out.println();
         System.out.println("解密: " + deStr(enStr));

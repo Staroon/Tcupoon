@@ -63,12 +63,8 @@ public class UploadTool {
                 generateString() + "." + fileExtrend) : ("/" + tcupConfig.getCosPath() + "/" + today + "/" +
                 generateString() + "." + fileExtrend);
 
-        // 初始化用户身份信息
-        COSCredentials cred = new BasicCOSCredentials(tcupConfig.getSecretId(), tcupConfig.getSecretKey());
-        // 设置bucket的区域
-        ClientConfig clientConfig = new ClientConfig(new Region(tcupConfig.getRegion()));
         // 生成cos客户端
-        COSClient cosClient = new COSClient(cred, clientConfig);
+        COSClient cosClient = getCosClient(tcupConfig);
 
         // bucket的命名规则为{name}-{appid} ，此处填写的存储桶名称必须为此格式
         String bucketName = tcupConfig.getBucketName() + "-" + tcupConfig.getAppId();
@@ -91,6 +87,14 @@ public class UploadTool {
                 ".cos." + tcupConfig.getRegion() + ".myqcloud.com" + cosFileName;
 
         return outUrl;
+    }
+
+    private static COSClient getCosClient(Config tcupConfig) {
+
+        COSCredentials cred = new BasicCOSCredentials(tcupConfig.getSecretId(), tcupConfig.getSecretKey());
+        ClientConfig clientConfig = new ClientConfig(new Region("ap-beijing"));
+
+        return new COSClient(cred, clientConfig);
     }
 
     public static void main(String[] args) {
